@@ -1,5 +1,8 @@
-package com.in28minutes.springboot.rest.example.student;
+package com.in28minutes.springboot.rest.example.controller;
 
+import com.in28minutes.springboot.rest.example.student.Student;
+import com.in28minutes.springboot.rest.example.student.StudentNotFoundException;
+import com.in28minutes.springboot.rest.example.student.StudentRepository;
 import org.jspecify.annotations.NonNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +21,7 @@ public class StudentResource {
         this.studentRepository = studentRepository;
     }
 
-    @GetMapping("/students")
+    @GetMapping("/")
     public List<Student> retrieveAllStudents() {
         return studentRepository.findAll();
     }
@@ -40,7 +43,7 @@ public class StudentResource {
 
     @PostMapping("/students")
     public ResponseEntity<@NonNull Student> createStudent(@RequestBody Student student) {
-        var savedStudent = studentRepository.save(student);
+        Student savedStudent = studentRepository.save(student);
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
