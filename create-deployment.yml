@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: spring-boot-demo-depl
+spec:
+ replicas: 2
+ strategy: 
+    type: Recreate
+ selector: 
+   matchLabels: 
+     app: spring-boot-demo
+ template:
+  metadata:
+   name: spring-boot-demo-pod
+   labels:
+     app: spring-boot-demo 
+  spec: 
+    containers:
+    - name: spring-boot-demo-container
+      image: anitkumar224/workrepository:spring-boot-demo
+      imagePullPolicy: Always
+      ports:
+      - containerPort: 8080
