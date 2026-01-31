@@ -2,23 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: mavenwebappdeployment
+ name: spring-boot-demo-depl
 spec:
  replicas: 2
  strategy: 
     type: Recreate
  selector: 
    matchLabels: 
-     app: mavenwebapp
+     app: spring-boot-demo
  template:
   metadata:
-   name: mavenwebapppod
+   name: spring-boot-demo-pod
    labels:
-     app: mavenwebapp	 
+     app: spring-boot-demo 
   spec: 
     containers:
-    - name: mavenwebappcontainer
-      image: ashokit/maven-web-app:v3
+    - name: spring-boot-demo-container
+      image: spring-boot-demo:latest
       imagePullPolicy: Always
       ports:
       - containerPort: 8080
@@ -26,11 +26,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
- name: mavenwebappsvc
+ name: spring-boot-demo-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
-   app: mavenwebapp
+   app: spring-boot-demo
   ports:
    - port: 80
      targetPort: 8080
