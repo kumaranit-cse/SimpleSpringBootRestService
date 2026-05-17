@@ -1,4 +1,4 @@
-package com.in28minutes.springboot.rest.example.controller;
+package com.devopstutorials.springboot.rest.controller;
 
 import org.jspecify.annotations.NonNull;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-import com.in28minutes.springboot.rest.example.student.*;
+import com.devopstutorials.springboot.rest.student.*;
 
 @RestController
 public class StudentController {
