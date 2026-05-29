@@ -8,6 +8,7 @@ terraform {
 }
 
 provider "kubernetes" {
-    config_path    = "%USERPROFILE%/.kube/config"
+    // config_path    = "~/.kube/config"
+	config_path    = "C:\\Users\\anitk\\.kube\\config"
     config_context = "minikube"
 }
